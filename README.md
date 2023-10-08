@@ -12,7 +12,7 @@ O jogo é jogado da seguinte forma:
 4. Explicite a conexão entre as palavras de seu grupo, revelando o critério utilizado para a organização.
 5. O jogo continua com outros jogadores, que também formarão grupos e explicarão suas conexões.
 
-Demo: https://conexo-jogo.vercel.app/
+Demo: <a href="https://conexo-jogo.vercel.app" target="_blank">https://conexo-jogo.vercel.app</a>
 
 ## Requisitos
 
