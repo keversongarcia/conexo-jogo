@@ -12,6 +12,8 @@ O jogo é jogado da seguinte forma:
 4. Explicite a conexão entre as palavras de seu grupo, revelando o critério utilizado para a organização.
 5. O jogo continua com outros jogadores, que também formarão grupos e explicarão suas conexões.
 
+Demo: https://conexo-jogo.vercel.app/
+
 ## Requisitos
 
 - Não é necessário nenhum software específico para jogar o Jogo Conexo. Basta uma lista de palavras e alguns amigos para participar da diversão!
