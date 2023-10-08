@@ -31,6 +31,16 @@ const words = [
   'CAMA',
 ];
 
+const description = (
+  <p>
+    O jogo <span className='text-secondary'>"Conexo"</span> é um desafio de
+    palavras e categorias, onde os participantes devem selecionar quatro
+    palavras que compartilham um ponto em comum, seja uma categoria, um tema ou
+    um conceito. O objetivo do jogo é criar conexões lógicas entre as palavras,
+    organizando-as em grupos de quatro com base em critérios específicos.
+  </p>
+);
+
 export default function Home() {
   // start the game
   const [start, setStart] = useState(false);
@@ -38,6 +48,7 @@ export default function Home() {
   const [current, setCurrent] = useState<string[]>([]);
   // accepted words
   const [accepts, setAccepts] = useState<string[][]>([]);
+  const [error, setError] = useState(false);
 
   // check if the words are correct
   const onCheck = (items: string[]) => {
@@ -47,7 +58,14 @@ export default function Home() {
 
   // check if the words are not correct
   const onNotCheck = () => {
-    setCurrent([]);
+    let timer;
+    clearTimeout(timer);
+    setError(true);
+
+    timer = setTimeout(() => {
+      setCurrent([]);
+      setError(false);
+    }, 500);
   };
 
   // verify if the words are correct or not
@@ -70,12 +88,19 @@ export default function Home() {
     accepts.some((items) => items.includes(word));
 
   // check if the words are accepted and return the class
-  const classAccepted = (word: string) =>
-    hasAccepted(word)
-      ? 'bg-green-900'
-      : current.includes(word)
-      ? 'bg-white bg-opacity-10'
-      : 'bg-white bg-opacity-5';
+  const classAccepted = (word: string) => {
+    if (hasAccepted(word)) {
+      return 'bg-green-900';
+    }
+    if (current.includes(word)) {
+      if (error) {
+        return 'bg-red-900';
+      }
+      return 'bg-white bg-opacity-10';
+    } else {
+      return 'bg-white bg-opacity-5';
+    }
+  };
 
   // concat all words accepted
   const itemsSuccess = accepts.reduce(
@@ -89,7 +114,7 @@ export default function Home() {
   const buttonLabel = !start
     ? 'Começar a Jogar'
     : isSuccess
-    ? 'Sair do Jogo'
+    ? 'Recomeçar'
     : 'Cancelar';
 
   const clearStates = () => {
@@ -114,16 +139,7 @@ export default function Home() {
           Conexo
         </h1>
         {!start && (
-          <div className='max-w-[500px] text-center mb-8'>
-            <p>
-              O jogo <span className='text-secondary'>"Conexo"</span> é um
-              desafio de palavras e categorias, onde os participantes devem
-              selecionar quatro palavras que compartilham um ponto em comum,
-              seja uma categoria, um tema ou um conceito. O objetivo do jogo é
-              criar conexões lógicas entre as palavras, organizando-as em grupos
-              de quatro com base em critérios específicos.
-            </p>
-          </div>
+          <div className='max-w-[500px] text-center mb-8'>{description}</div>
         )}
         {start && !isSuccess && (
           <Board
