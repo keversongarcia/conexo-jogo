@@ -1,4 +1,4 @@
-# Jogo Conexo
+# Jogo Conexo :joystick:
 
 O Jogo Conexo é um divertido desafio de palavras e categorias, onde os jogadores precisam encontrar conexões lógicas entre palavras e organizá-las em grupos de acordo com critérios específicos. É uma excelente atividade para estimular o raciocínio lógico, o pensamento criativo e o vocabulário.
 
